@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loteria</title>
+  
+    <style>
+        body{
+            font-family: sans-serif;
+            background-color: black;
+            font-style: oblique; 
+            
+        }
+    </style>
+
+</head>
+<body>
+    <h1><span style="color:blueviolet">Jogo do par ou impar / Loteria </span></h1>
+        <p><span style="color:blue">Digite um número de 0 a 5</span></p>
+        <input type="number" id="meuNumero" min="0" max="5"><br>
+
+       <label><span style="color:aqua"><input type="radio" name="opcao" value="par" checked>Par</label></span><br>
+       <label><span style="color: aqua"><input type="radio" name="opcao" value="impar" checked>Impar</label></span><br>
+        <button onclick="jogar()">Jogar</button>
+        <script>
+
+            var nComputar = "";
+            var nJogador = "";
+            var minhaEscolha = "par";
+
+            function sortear(max){
+                return Math.floor(Math.random() * max)
+
+            }
+
+
+            function jogar(){
+                nJogador = document.querySelector("#meuNumero").value;
+              nComputar =  sortear(5);
+              minhaEscolha = document.querySelector('input[type="radio"]:checked').value;
+              if(!nJogador){
+                return alert('Primeiro digite um numero');
+              }
+
+              nJogador = parseInt(nJogador);
+              var total = nJogador + nComputar;
+              var resultado = (total % 2 === 0) ? 'par' : 'impar';
+                verificarResultado(resultado)
+            }
+
+                function verificarResultado(resultado){
+                    if(minhaEscolha === resultado){
+                        alert("Eu ganhei");
+                    }
+                    else{
+                        alert("O computador Ganhou");
+
+                    }
+               
+                }
+
+
+
+
+             
+
+            
+            
+        
+        </script>
+
+
+</body>
+</html>
